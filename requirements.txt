@@ -1,9 +1,8 @@
 streamlit
 pandas
 numpy
-re
-os
-Image
-WordCloud
-matplotlib.pyplot
-SentenceTransformer,util
+pillow
+wordcloud
+matplotlib
+sentence-transformers
+plotly
