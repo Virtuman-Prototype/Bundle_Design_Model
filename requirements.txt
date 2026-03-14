@@ -1,0 +1,9 @@
+streamlit
+pandas
+numpy
+re
+os
+Image
+WordCloud
+matplotlib.pyplot
+SentenceTransformer,util
