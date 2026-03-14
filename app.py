@@ -170,6 +170,68 @@ if step == "M1: Strategic Evaluator":
                 showlegend=False
             )
             st.plotly_chart(fig_radar, use_container_width=True)
+            # --- 承接在 st.plotly_chart(fig_radar, use_container_width=True) 之后 ---
+
+            # 1. 展示数据预览 (让用户看到上传的 CSV 确实被读取了) [cite: 158]
+            st.write("### 📄 Data Preview (Brand B)")
+            st.dataframe(df_b.head(3)) # 这里的 df_b 对应你上传的 Partner Data
+            
+            # 2. 显示 AI 实测分值与决策触发器 [cite: 177]
+            st.divider()
+            avg_s = df_fit["Fit Score"].mean() # 获取计算出的平均分
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                # 将原来的模拟 0.88 改为动态计算的 avg_s
+                # 同时根据分值给出等级评价
+                status = "GOLD Level" if avg_s >= 4 else "SILVER Level" if avg_s >= 3 else "RE-EVALUATE"
+                st.metric(label="Fit Index (FI)", value=f"{avg_s:.2f}", delta=status)
+            
+            with col2:
+                # 对应 PPT 中的逻辑触发逻辑 [cite: 70, 172]
+                if avg_s >= 4:
+                    st.info("🎯 **Logic Trigger**: Brand values highly aligned. Full bundle scenario unlocked.")
+                elif avg_s >= 3:
+                    st.info("⚠️ **Logic Trigger**: Partial alignment. Joint marketing recommended before bundling.")
+                else:
+                    st.error("❌ **Logic Trigger**: Low alignment. Bundle risk is high.")
+
+            # --- 后面接原有的决策反馈 (st.success/warning) ---
+# --- 承接在 st.info 之后，M2 之前 ---
+
+            st.markdown("### 📢 AI Strategic Recommendation")
+            
+            # 建立基于分值的决策矩阵，对应 DP 和 DR 要求 [cite: 169, 174]
+            if avg_s >= 4:
+                st.success(f"""
+                **STRATEGIC DECISION: PROCEED TO BUNDLING**
+                - **Status**: High Synergy Detected (Score: {avg_s:.2f}) 
+                - **Next Step**: Unlock the 'Urban Meditation Retreat' bundle in M4[cite: 173]. 
+                - **Rationale**: Core values and aesthetic preferences are highly congruent[cite: 178].
+                """)
+                st.balloons() # 庆祝高契合度的彩蛋
+                
+            elif avg_s >= 3:
+                st.warning(f"""
+                **STRATEGIC DECISION: CONDITIONAL COLLABORATION**
+                - **Status**: Moderate Synergy (Score: {avg_s:.2f})
+                - **Next Step**: Conduct a joint pilot event (M3) before full inventory commitment.
+                - **Rationale**: Functional complementarity exists, but audience overlap needs verification[cite: 161].
+                """)
+                
+            else:
+                st.error(f"""
+                **STRATEGIC DECISION: RE-EVALUATE PARTNERSHIP**
+                - **Status**: Low Synergy (Score: {avg_s:.2f})
+                - **Next Step**: Search for alternative partners or adjust Brand B's positioning.
+                - **Rationale**: Significant gaps in latent factor alignment[cite: 175].
+                """)
+
+# --- 注意：这里必须回退缩进，确保与顶部的 if step == "M1" 对齐 ---
+elif step == "M2: Community Insights":
+    # ... 你的 M2 代码 ...
+
+            
 
 # --- 模块 2: 社区感知 (Community Insights) ---
 elif step == "M2: Community Insights":
