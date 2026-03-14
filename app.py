@@ -227,12 +227,6 @@ if step == "M1: Strategic Evaluator":
                 - **Rationale**: Significant gaps in latent factor alignment[cite: 175].
                 """)
 
-# --- 注意：这里必须回退缩进，确保与顶部的 if step == "M1" 对齐 ---
-elif step == "M2: Community Insights":
-    # ... 你的 M2 代码 ...
-
-            
-
 # --- 模块 2: 社区感知 (Community Insights) ---
 elif step == "M2: Community Insights":
     st.title("📊 M2: Community Insight Engine")
