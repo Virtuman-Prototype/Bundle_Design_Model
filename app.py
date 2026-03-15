@@ -103,6 +103,45 @@ def generate_styled_cloud(text, mask_path, main_color):
 # --- 5. UI 逻辑与模块交互 ---
 st.sidebar.title("🛠️ Bundle Co-Creation Design Model")
 step = st.sidebar.radio("Navigation", ["M1: Strategic Evaluator", "M2: Community Insights", "M3: Co-design Lab", "M4: Dynamic Delivery"])
+import base64
+
+# 定义一个函数来读取本地图片并转化为 base64 格式
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+st.sidebar.title("🛠️ Bundle Co-Creation")
+
+step = st.sidebar.radio(
+    "Navigation", 
+    ["M1: Strategic Evaluator", "M2: Community Insights", "M3: Co-design Lab", "M4: Dynamic Delivery"]
+)
+
+st.sidebar.markdown("---") 
+
+# --- 侧边栏底部个人信息 ---
+try:
+    # 读取你上传到 GitHub 的 avatar.png
+    # 如果你的后缀是 jpg，请记得修改下面的文件名
+    bin_str = get_base64_of_bin_file('avatar.png')
+    
+    st.sidebar.markdown(
+        f"""
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="data:image/png;base64,{bin_str}" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #1F6859; object-fit: cover;">
+            <div>
+                <p style="margin:0; font-size: 13px; font-weight: bold; color: #1F6859;">Serena Shuo YANG</p>
+                <p style="margin:0; font-size: 11px; color: #666;">Shuoyang5@Carleton</p>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+except Exception as e:
+    # 如果图片还没上传成功，先显示文字版避免报错
+    st.sidebar.write("👤 **Serena Shuo YANG**")
+    st.sidebar.caption("Shuoyang5@Carleton")
 
 if step == "M1: Strategic Evaluator":
     st.title("🛡️ M1: Strategic Brand Synergy Evaluator")
