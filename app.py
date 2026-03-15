@@ -6,6 +6,7 @@ import os
 from PIL import Image
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
+import base64
 from sentence_transformers import SentenceTransformer, util
 
 # --- 1. 初始化页面配置 ---
@@ -101,18 +102,22 @@ def generate_styled_cloud(text, mask_path, main_color):
         return None
 
 # --- 5. UI 逻辑与模块交互 ---
-st.sidebar.title("🛠️ Bundle Co-Creation Design Model")
-step = st.sidebar.radio("Navigation", ["M1: Strategic Evaluator", "M2: Community Insights", "M3: Co-design Lab", "M4: Dynamic Delivery"])
+
+# 建议将 get_base64 函数和 import base64 移到文件最顶部，如果留在这里也可以，但必须保证下方不重复
 import base64
 
-# 定义一个函数来读取本地图片并转化为 base64 格式
 def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
+    try:
+        with open(bin_file, 'rb') as f:
+            data = f.read()
+        return base64.b64encode(data).decode()
+    except:
+        return None
 
-st.sidebar.title("🛠️ Bundle Co-Creation")
+# --- 侧边栏内容 ---
+st.sidebar.title("🛠️ Bundle Co-Creation Design Model")
 
+# 注意：这里只保留一个 radio 导航
 step = st.sidebar.radio(
     "Navigation", 
     ["M1: Strategic Evaluator", "M2: Community Insights", "M3: Co-design Lab", "M4: Dynamic Delivery"]
@@ -121,11 +126,10 @@ step = st.sidebar.radio(
 st.sidebar.markdown("---") 
 
 # --- 侧边栏底部个人信息 ---
-try:
-    # 读取你上传到 GitHub 的 avatar.png
-    # 如果你的后缀是 jpg，请记得修改下面的文件名
-    bin_str = get_base64_of_bin_file('avatar.png')
-    
+# 尝试读取头像
+bin_str = get_base64_of_bin_file('avatar.png')
+
+if bin_str:
     st.sidebar.markdown(
         f"""
         <div style="display: flex; align-items: center; gap: 12px;">
@@ -138,8 +142,8 @@ try:
         """,
         unsafe_allow_html=True
     )
-except Exception as e:
-    # 如果图片还没上传成功，先显示文字版避免报错
+else:
+    # 如果图片 avatar.png 不存在，则显示备用文字版
     st.sidebar.write("👤 **Serena Shuo YANG**")
     st.sidebar.caption("Shuoyang5@Carleton")
 
