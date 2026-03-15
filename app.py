@@ -173,7 +173,7 @@ if step == "M1: Strategic Evaluator":
 
 # --- 模块 2: 社区感知 (Community Insights) ---
 elif step == "M2: Community Insights":
-st.title("📊 M2: Community Insight Engine")
+    st.title("📊 M2: Community Insight Engine")
     st.markdown("### 🔗 Please link your social media here:")
 
     # 1. 第一行：JUNA Académie 的链接输入
