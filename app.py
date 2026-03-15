@@ -177,7 +177,7 @@ elif step == "M2: Community Insights":
     st.markdown("### 🔗 Please link your social media here:")
 
     # 1. 第一行：JUNA Académie 的链接输入
-    st.write("**Step 1: Connect JUNA Académie Channels**")
+    st.write("**Step 1: Connect JUNA & Partner Channels**")
     col1, col2, col3, _ = st.columns([1, 1, 1, 5])
     
     with col1:
