@@ -182,13 +182,13 @@ elif step == "M2: Community Insights":
     
     with col1:
         # 使用 span 标签通过 CSS 缩小字号，防止换行
-        with st.popover("📸 <span style='font-size:0.8rem; white-space:nowrap;'>Instagram</span>"):
+        with st.popover("📸 IG"):
             link_juna_ig = st.text_input("JUNA Instagram Link", "https://instagram.com/juna_academie")
     with col2:
-        with st.popover("📘 <span style='font-size:0.8rem; white-space:nowrap;'>Facebook</span>"):
+        with st.popover("📘 FB"):
             link_juna_fb = st.text_input("JUNA Facebook Link")
     with col3:
-        with st.popover("🎥 <span style='font-size:0.8rem; white-space:nowrap;'>YouTube</span>"):
+        with st.popover("🎥 YT"):
             link_juna_yt = st.text_input("JUNA YouTube Link")
 
     st.divider()
@@ -198,14 +198,14 @@ elif step == "M2: Community Insights":
     colb1, colb2, colb3, _ = st.columns([1, 1, 1, 5])
     
     with col1:
-        # 使用 span 标签通过 CSS 缩小字号，防止换行
-        with st.popover("📸 <span style='font-size:0.8rem; white-space:nowrap;'>Instagram</span>"):
+        # 直接去掉 span，只保留最核心的单词，缩进宽度会自动适配
+        with st.popover("📸 IG"):
             link_b_ig = st.text_input("Partner Instagram Link", "https://instagram.com/juna_academie")
     with col2:
-        with st.popover("📘 <span style='font-size:0.8rem; white-space:nowrap;'>Facebook</span>"):
+        with st.popover("📘 FB"):
             link_b_fb = st.text_input("Partner Facebook Link")
     with col3:
-        with st.popover("🎥 <span style='font-size:0.8rem; white-space:nowrap;'>YouTube</span>"):
+        with st.popover("🎥 YT"):
             link_b_yt = st.text_input("Partner YouTube Link")
 
     st.write("") 
