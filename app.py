@@ -181,13 +181,14 @@ elif step == "M2: Community Insights":
     col1, col2, col3, _ = st.columns([1, 1, 1, 5])
     
     with col1:
-        with st.popover("📸 Instagram"):
+        # 使用 span 标签通过 CSS 缩小字号，防止换行
+        with st.popover("📸 <span style='font-size:0.8rem; white-space:nowrap;'>Instagram</span>"):
             link_juna_ig = st.text_input("JUNA Instagram Link", "https://instagram.com/juna_academie")
     with col2:
-        with st.popover("📘 Facebook"):
+        with st.popover("📘 <span style='font-size:0.8rem; white-space:nowrap;'>Facebook</span>"):
             link_juna_fb = st.text_input("JUNA Facebook Link")
     with col3:
-        with st.popover("🎥 YouTube"):
+        with st.popover("🎥 <span style='font-size:0.8rem; white-space:nowrap;'>YouTube</span>"):
             link_juna_yt = st.text_input("JUNA YouTube Link")
 
     st.divider()
@@ -196,14 +197,15 @@ elif step == "M2: Community Insights":
     st.write("**Step 2: Connect Partner (Brand B) Channels**")
     colb1, colb2, colb3, _ = st.columns([1, 1, 1, 5])
     
-    with colb1:
-        with st.popover("📸 Instagram"):
-            link_b_ig = st.text_input("Partner Instagram Link", "https://instagram.com/roseboreal")
-    with colb2:
-        with st.popover("📘 Facebook"):
+   with col1:
+        # 使用 span 标签通过 CSS 缩小字号，防止换行
+        with st.popover("📸 <span style='font-size:0.8rem; white-space:nowrap;'>Instagram</span>"):
+            link_b_ig = st.text_input("Partner Instagram Link", "https://instagram.com/juna_academie")
+    with col2:
+        with st.popover("📘 <span style='font-size:0.8rem; white-space:nowrap;'>Facebook</span>"):
             link_b_fb = st.text_input("Partner Facebook Link")
-    with colb3:
-        with st.popover("🎥 YouTube"):
+    with col3:
+        with st.popover("🎥 <span style='font-size:0.8rem; white-space:nowrap;'>YouTube</span>"):
             link_b_yt = st.text_input("Partner YouTube Link")
 
     st.write("") 
