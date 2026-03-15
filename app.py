@@ -197,7 +197,7 @@ elif step == "M2: Community Insights":
     st.write("**Step 2: Connect Partner (Brand B) Channels**")
     colb1, colb2, colb3, _ = st.columns([1, 1, 1, 5])
     
-   with col1:
+    with col1:
         # 使用 span 标签通过 CSS 缩小字号，防止换行
         with st.popover("📸 <span style='font-size:0.8rem; white-space:nowrap;'>Instagram</span>"):
             link_b_ig = st.text_input("Partner Instagram Link", "https://instagram.com/juna_academie")
