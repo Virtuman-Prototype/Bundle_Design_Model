@@ -167,7 +167,7 @@ if step == "M1: Strategic Evaluator":
 
         if st.button("Run AI Brand Fit Analysis"):
             # A. 形状遮罩词云展示
-            st.subheader("☁️ Brand Identity Visualizations (Masked)")
+            st.subheader("☁️ Brand Identity Visualizations")
             col_wc1, col_wc2 = st.columns(2)
             with col_wc1:
                 st.write("**JUNA Silhouette**")
