@@ -25,7 +25,7 @@ def load_ai_model():
 model = load_ai_model()
 
 @st.cache_data
-def load_custom_stopwords(file_path="stopword.txt"):
+def load_custom_stopwords(file_path="Stopword.txt"):
     # 基础停用词库，处理魁北克英法双语数据 [cite: 139]
     base_sw = {"the", "and", "our", "with", "for", "from", "this", "is", "of", "to", "in", "it", "vous", "votre", "pour", "est"}
     if os.path.exists(file_path):
@@ -144,7 +144,7 @@ if bin_str:
     )
 else:
     # 如果图片 avatar.png 不存在，则显示备用文字版
-    st.sidebar.write("👤 **Serena Shuo YANG**")
+    st.sidebar.write("👤 **Serena S YANG**")
     st.sidebar.caption("Shuoyang5@Carleton")
 
 if step == "M1: Strategic Evaluator":
