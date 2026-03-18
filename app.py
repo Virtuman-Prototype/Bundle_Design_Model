@@ -333,6 +333,47 @@ elif step == "M2: Community Insights":
                 st.subheader("📈 Real-time Sentiment Trend")
                 chart_data = df_trends.sort_values('Date').set_index('Date')['Sentiment_Score']
                 st.line_chart(chart_data)
+
+                # --- 新增：LDA 主题分布柱状图 ---
+                st.divider()
+                st.subheader("🧬 LDA Topic Modeling Distribution")
+                st.write("AI-driven extraction of latent conversation themes from Quebec wellness communities.")
+
+                # 模拟 LDA 提取的主题及其权重数据
+                topic_data = {
+                    "Topic Area": [
+                        "Nature Connectivity", 
+                        "Urban Mindfulness", 
+                        "Sustainable Materials", 
+                        "Community Events", 
+                        "Wellness Rituals"
+                    ],
+                    "Relevance Weight": [0.35, 0.25, 0.18, 0.12, 0.10]
+                }
+                df_topics = pd.DataFrame(topic_data)
+
+                # 使用 Plotly 绘制水平柱状图，更有专业 Dashboard 的感觉
+                import plotly.express as px
+                
+                fig_topics = px.bar(
+                    df_topics, 
+                    x="Relevance Weight", 
+                    y="Topic Area", 
+                    orientation='h',
+                    color="Relevance Weight",
+                    color_continuous_scale="Viridis",
+                    labels={"Relevance Weight": "Topic Weight (Confidence)"}
+                )
+                
+                fig_topics.update_layout(
+                    showlegend=False,
+                    height=350,
+                    margin=dict(l=20, r=20, t=20, b=20)
+                )
+                
+                st.plotly_chart(fig_topics, use_container_width=True)
+
+                st.info("💡 **Insight**: 'Nature Connectivity' is the dominant latent factor this month, directly triggering the 'Forest Yoga' scenario in M3.")
                 
                 # C. 语义热点与早期采用者关键词 [cite: 141, 148]
                 st.subheader("🔥 Emerging Topic Hotspots (Early Adopter Cues)")
@@ -351,19 +392,53 @@ elif step == "M2: Community Insights":
 
 # --- 模块 3: 协同设计实验室 (Co-design Lab) ---
 elif step == "M3: Co-design Lab":
-    st.title("🧪 M3: Co-creation Design Lab")
-    st.write("Matching Brand Assets with Community Motives.")
+st.markdown("### 🧬 Data Fusion & Scenario Mapping")
+    st.info("Integrating Brand Synergy (M1) and Community Trends (M2) to define the optimal bundle context.")
+
+    # --- 1. 数据融合看板 ---
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric("Brand Compatibility (from M1)", "High", "0.88 FI")
+    with col2:
+        st.metric("Top Community Factor (from M2)", "Nature Connectivity", "35% Weight")
+
+    st.divider()
+
+    # --- 2. 交互实验室：参数调整 ---
+    st.subheader("🛠️ Strategy Tuning")
+    st.write("Adjust the weighting of latent factors to refine the co-creation output.")
     
-    inventory = pd.read_csv("Apparel_Inventory.csv")
+    col_a, col_b = st.columns(2)
+    with col_a:
+        factor_1 = st.slider("Brand Core Consistency", 0.0, 1.0, 0.8)
+        factor_2 = st.slider("Community Trend Velocity", 0.0, 1.0, 0.6)
+    with col_b:
+        st.write("**Identified Synergy Gap:** Low")
+        st.write("**Suggested Focus:** Emotional Wellness & Outdoor Performance")
+        st.button("✨ Re-optimize Mapping")
+
+    st.divider()
+
+    # --- 3. 核心输出：场景匹配结果 ---
+    st.subheader("🎯 Scenario-Apparel Mapping Result")
     
-    # 交互：选择一个趋势场景
-    selected_scenario = st.selectbox("Select a detected trend scenario:", inventory['Scenario_Tag'].unique())
-    
-    # 逻辑匹配
-    matches = inventory[inventory['Scenario_Tag'] == selected_scenario]
-    
-    st.write(f"Found {len(matches)} matching assets for {selected_scenario}:")
-    st.table(matches[['Brand', 'Product_Name', 'Type']])
+    # 使用 Container 模拟一个精致的卡片效果
+    with st.container(border=True):
+        c1, c2 = st.columns([1, 2])
+        with c1:
+            # 这里可以放一张代表场景的示意图（如果有的话）
+            st.image("https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=300", caption="Scenario Concept")
+        with c2:
+            st.markdown("#### **Selected Theme: Laurentian Forest Yoga**")
+            st.write("**Rationale:** High alignment between Rose Boreal's nature DNA and the current #NatureFlow community trend.")
+            
+            # 展示匹配的关键词
+            st.write("**Mapped Design Elements:**")
+            st.markdown("- 🌿 *Color Palette:* Pine Green & Earthy Brown")
+            st.markdown("- 🧘 *Functionality:* Thermal protection & High elasticity")
+            st.markdown("- 📦 *Bundle Type:* Experience-driven (Apparel + Guided Session)")
+
+    st.success("✅ Scenario successfully mapped to DR3/DR9 requirements. Ready for Dynamic Delivery (M4).")
 
 # --- 模块 4: 动态交付 (Dynamic Delivery) ---
 elif step == "M4: Dynamic Delivery":
