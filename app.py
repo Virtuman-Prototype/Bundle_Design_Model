@@ -392,7 +392,7 @@ elif step == "M2: Community Insights":
 
 # --- 模块 3: 协同设计实验室 (Co-design Lab) ---
 elif step == "M3: Co-design Lab":
-st.markdown("### 🧬 Data Fusion & Scenario Mapping")
+    st.markdown("### 🧬 Data Fusion & Scenario Mapping")
     st.info("Integrating Brand Synergy (M1) and Community Trends (M2) to define the optimal bundle context.")
 
     # --- 1. 数据融合看板 ---
