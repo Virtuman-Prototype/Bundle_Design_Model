@@ -445,7 +445,7 @@ elif step == "M3: Co-design Lab":
     # 定义不同场景的内容字典
     content_map = {
         "Laurentian Forest Yoga (Nature Connectivity)": {
-            "https://www.bonjourquebec.com/media/juna-yoga-ski-yoga-a-mont-tremblant.jpg?width=2900&height=2400",
+            "img": "https://www.bonjourquebec.com/media/juna-yoga-ski-yoga-a-mont-tremblant.jpg?width=2900&height=2400",
             "title": "Laurentian Forest Yoga",     
             "color": "Pine Green & Earthy Brown",
             "material": "Thermal Recycled Polyester"
