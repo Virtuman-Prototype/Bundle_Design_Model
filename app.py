@@ -392,53 +392,68 @@ elif step == "M2: Community Insights":
 
 # --- 模块 3: 协同设计实验室 (Co-design Lab) ---
 elif step == "M3: Co-design Lab":
+    st.title("🧪 M3: Co-creation Design Lab")
     st.markdown("### 🧬 Data Fusion & Scenario Mapping")
-    st.info("Integrating Brand Synergy (M1) and Community Trends (M2) to define the optimal bundle context.")
+    
+    # --- 1. 下拉菜单选择 (核心交互) ---
+    st.write("#### 🎯 Select Target Co-creation Scenario")
+    # 这里定义你的下拉选项
+    scenario_choice = st.selectbox(
+        "Choose a validated scenario based on M2 Trends:",
+        [
+            "Laurentian Forest Yoga (Nature Connectivity)", 
+            "Montreal Urban Meditation (Mindfulness)", 
+            "St. Lawrence River Flow (Water Element)"
+        ]
+    )
 
-    # --- 1. 数据融合看板 ---
+    st.divider()
+
+    # --- 2. 数据融合看板 (根据选择动态显示指标) ---
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("Brand Compatibility (from M1)", "High", "0.88 FI")
+        st.metric("Brand Compatibility", "High", "0.88 FI")
     with col2:
-        st.metric("Top Community Factor (from M2)", "Nature Connectivity", "35% Weight")
+        # 这里的指标会随着你选的场景显示不同的权重
+        weight = "35%" if "Forest" in scenario_choice else "25%"
+        st.metric("Community Trend Weight", scenario_choice.split("(")[1].replace(")", ""), weight)
+
+    # --- 3. 参数微调 (保留之前的实验室功能) ---
+    with st.expander("🛠️ Advanced Strategy Tuning"):
+        col_a, col_b = st.columns(2)
+        with col_a:
+            st.slider("Brand Core Consistency", 0.0, 1.0, 0.8)
+        with col_b:
+            st.slider("Community Trend Velocity", 0.0, 1.0, 0.6)
 
     st.divider()
 
-    # --- 2. 交互实验室：参数调整 ---
-    st.subheader("🛠️ Strategy Tuning")
-    st.write("Adjust the weighting of latent factors to refine the co-creation output.")
-    
-    col_a, col_b = st.columns(2)
-    with col_a:
-        factor_1 = st.slider("Brand Core Consistency", 0.0, 1.0, 0.8)
-        factor_2 = st.slider("Community Trend Velocity", 0.0, 1.0, 0.6)
-    with col_b:
-        st.write("**Identified Synergy Gap:** Low")
-        st.write("**Suggested Focus:** Emotional Wellness & Outdoor Performance")
-        st.button("✨ Re-optimize Mapping")
-
-    st.divider()
-
-    # --- 3. 核心输出：场景匹配结果 ---
+    # --- 4. 动态场景匹配结果 (Card UI) ---
     st.subheader("🎯 Scenario-Apparel Mapping Result")
     
-    # 使用 Container 模拟一个精致的卡片效果
     with st.container(border=True):
         c1, c2 = st.columns([1, 2])
         with c1:
-            # 这里可以放一张代表场景的示意图（如果有的话）
-            st.image("https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=300", caption="Scenario Concept")
-        with c2:
-            st.markdown("#### **Selected Theme: Laurentian Forest Yoga**")
-            st.write("**Rationale:** High alignment between Rose Boreal's nature DNA and the current #NatureFlow community trend.")
+            # 根据下拉菜单切换图片（这里演示切换逻辑）
+            if "Forest" in scenario_choice:
+                img_url = "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=300"
+                theme_name = "Laurentian Forest Yoga"
+            else:
+                img_url = "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=300"
+                theme_name = "Urban Mindfulness"
+                
+            st.image(img_url, caption=f"Concept: {theme_name}")
             
-            # 展示匹配的关键词
+        with c2:
+            st.markdown(f"#### **Theme: {theme_name}**")
+            st.write(f"**Rationale:** Verified matching between JUNA/Partner DNA and the {scenario_choice.split('(')[1]}")
+            
             st.write("**Mapped Design Elements:**")
-            st.markdown("- 🌿 *Color Palette:* Pine Green & Earthy Brown")
-            st.markdown("- 🧘 *Functionality:* Thermal protection & High elasticity")
-            st.markdown("- 📦 *Bundle Type:* Experience-driven (Apparel + Guided Session)")
+            st.markdown("- 🎨 *Style:* Minimalist & Earthy")
+            st.markdown("- 🧵 *Material:* Recycled Polyester Blend")
+            st.markdown("- 🏷️ *Target Persona:* Quebec Early Adopter")
 
-    st.success("✅ Scenario successfully mapped to DR3/DR9 requirements. Ready for Dynamic Delivery (M4).")
+    st.success(f"✅ {theme_name} successfully mapped. Ready for M4 Dynamic Delivery.")
 
 # --- 模块 4: 动态交付 (Dynamic Delivery) ---
 elif step == "M4: Dynamic Delivery":
