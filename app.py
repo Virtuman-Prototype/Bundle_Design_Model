@@ -373,14 +373,14 @@ elif step == "M2: Community Insights":
     st.write("**Step 2: Connect Partner (Brand B) Channels**")
     colb1, colb2, colb3, _ = st.columns([1, 1, 1, 5])
     
-    with col1:
+    with colb1:
         # 直接去掉 span，只保留最核心的单词，缩进宽度会自动适配
         with st.popover("📸 IG"):
             link_b_ig = st.text_input("Partner Instagram Link", "https://instagram.com/rose_boreal")
-    with col2:
+    with colb2:
         with st.popover("📘 FB"):
             link_b_fb = st.text_input("Partner Facebook Link")
-    with col3:
+    with colb3:
         with st.popover("🎥 YT"):
             link_b_yt = st.text_input("Partner YouTube Link")
 
