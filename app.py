@@ -116,6 +116,81 @@ def get_base64_of_bin_file(bin_file):
 
 # --- 侧边栏内容 ---
 st.sidebar.title("🛠️ Bundle Co-Creation Design Model")
+# --- 侧边栏架构图展示逻辑 ---
+st.sidebar.markdown("---") # 分割线
+st.sidebar.write("🕵️‍♂️ **System Architecture Overview**")
+
+# 尝试读取架构图
+diag_bin_str = get_base64_of_bin_file('architecture_diagram.png')
+
+if diag_bin_str:
+    # 方案：利用 HTML/CSS 实现点击放大
+    # 我们创建一个隐藏的 input checkpoint，点击图片时触发
+    diagram_html = f"""
+    <style>
+    /* 缩略图样式 */
+    .sidebar-thumbnail {{
+        width: 100%;
+        cursor: zoom-in;
+        border-radius: 5px;
+        transition: transform 0.2s;
+        border: 1px solid #ddd;
+    }}
+    .sidebar-thumbnail:hover {{
+        transform: scale(1.02);
+    }}
+
+    /* 放大后的全图蒙层样式 */
+    #diag-lightbox {{
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.85);
+        cursor: zoom-out;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }}
+
+    #diag-lightbox img {{
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+    }}
+
+    /* 触发逻辑：当 checkpoint 被选中时显示蒙层 */
+    #diag-trigger:checked ~ #diag-lightbox {{
+        display: flex;
+    }}
+    
+    /* 隐藏 checkbox */
+    #diag-trigger {{
+        display: none;
+    }}
+    </style>
+
+    <input type="checkbox" id="diag-trigger">
+    
+    <label for="diag-trigger">
+        <img src="data:image/png;base64,{diag_bin_str}" class="sidebar-thumbnail" alt="Architectural Diagram Thumbnail">
+    </label>
+
+    <div id="diag-lightbox" onclick="document.getElementById('diag-trigger').checked=false">
+        <img src="data:image/png;base64,{diag_bin_str}" alt="Architectural Diagram Full Resolution">
+    </div>
+    """
+    st.sidebar.markdown(diagram_html, unsafe_allow_html=True)
+    st.sidebar.caption("💡 Click image to enlarge the full design logic.")
+else:
+    st.sidebar.warning("⚠️ 'architecture_diagram.png' not found. Please upload to GitHub.")
+
+st.sidebar.markdown("---") # 下方分割线，准备接 M1~M4 导航
+
 
 # 注意：这里只保留一个 radio 导航
 step = st.sidebar.radio(
