@@ -395,9 +395,8 @@ elif step == "M3: Co-design Lab":
     st.title("🧪 M3: Co-creation Design Lab")
     st.markdown("### 🧬 Data Fusion & Scenario Mapping")
     
-    # --- 1. 下拉菜单选择 (核心交互) ---
+    # --- 1. 下拉菜单选择 ---
     st.write("#### 🎯 Select Target Co-creation Scenario")
-    # 这里定义你的下拉选项
     scenario_choice = st.selectbox(
         "Choose a validated scenario based on M2 Trends:",
         [
@@ -409,51 +408,79 @@ elif step == "M3: Co-design Lab":
 
     st.divider()
 
-    # --- 2. 数据融合看板 (根据选择动态显示指标) ---
+    # --- 2. 数据融合看板 (指标随选择动态变化) ---
     col1, col2 = st.columns(2)
     with col1:
         st.metric("Brand Compatibility", "High", "0.88 FI")
     with col2:
-        # 这里的指标会随着你选的场景显示不同的权重
-        weight = "35%" if "Forest" in scenario_choice else "25%"
-        st.metric("Community Trend Weight", scenario_choice.split("(")[1].replace(")", ""), weight)
+        # 根据选择动态设置权重
+        if "Forest" in scenario_choice:
+            weight, tag = "35%", "Nature"
+        elif "Urban" in scenario_choice:
+            weight, tag = "25%", "Mindfulness"
+        else: # St. Lawrence
+            weight, tag = "20%", "Water"
+        st.metric("Community Trend Weight", tag, weight)
 
-    # --- 3. 参数微调 (保留之前的实验室功能) ---
+    # --- 3. 参数微调与优化按钮 ---
     with st.expander("🛠️ Advanced Strategy Tuning"):
         col_a, col_b = st.columns(2)
         with col_a:
             st.slider("Brand Core Consistency", 0.0, 1.0, 0.8)
-        with col_b:
             st.slider("Community Trend Velocity", 0.0, 1.0, 0.6)
+        with col_b:
+            st.write("**Strategy Status:** Ready")
+            # 重新加上你想要的按钮，并增加点击后的反馈
+            if st.button("✨ Re-optimize Mapping"):
+                with st.spinner("Re-calculating semantic distance..."):
+                    import time
+                    time.sleep(1)
+                    st.toast("Mapping parameters updated!", icon="✨")
 
     st.divider()
 
-    # --- 4. 动态场景匹配结果 (Card UI) ---
+    # --- 4. 动态场景匹配结果 (核心修复：三场景联动) ---
     st.subheader("🎯 Scenario-Apparel Mapping Result")
     
+    # 定义不同场景的内容字典
+    content_map = {
+        "Laurentian Forest Yoga (Nature Connectivity)": {
+            "img": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600",
+            "title": "Laurentian Forest Yoga",
+            "color": "Pine Green & Earthy Brown",
+            "material": "Thermal Recycled Polyester"
+        },
+        "Montreal Urban Meditation (Mindfulness)": {
+            "img": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600",
+            "title": "Montreal Urban Meditation",
+            "color": "Cool Grey & Zen White",
+            "material": "Seamless Organic Cotton"
+        },
+        "St. Lawrence River Flow (Water Element)": {
+            "img": "https://images.unsplash.com/photo-1500333913892-d34bdb0e230d?q=80&w=600",
+            "title": "St. Lawrence River Flow",
+            "color": "Deep River Blue & Mist",
+            "material": "Quick-dry Performance Fabric"
+        }
+    }
+
+    # 获取当前选中的内容
+    current_content = content_map[scenario_choice]
+
     with st.container(border=True):
-        c1, c2 = st.columns([1, 2])
+        c1, c2 = st.columns([1, 1.5])
         with c1:
-            # 根据下拉菜单切换图片（这里演示切换逻辑）
-            if "Forest" in scenario_choice:
-                img_url = "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=300"
-                theme_name = "Laurentian Forest Yoga"
-            else:
-                img_url = "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=300"
-                theme_name = "Urban Mindfulness"
-                
-            st.image(img_url, caption=f"Concept: {theme_name}")
-            
+            st.image(current_content["img"], caption=f"Concept: {current_content['title']}")
         with c2:
-            st.markdown(f"#### **Theme: {theme_name}**")
-            st.write(f"**Rationale:** Verified matching between JUNA/Partner DNA and the {scenario_choice.split('(')[1]}")
+            st.markdown(f"#### **Theme: {current_content['title']}**")
+            st.write(f"**Rationale:** High semantic match between 'Flow' elements and the {tag} factor.")
             
             st.write("**Mapped Design Elements:**")
-            st.markdown("- 🎨 *Style:* Minimalist & Earthy")
-            st.markdown("- 🧵 *Material:* Recycled Polyester Blend")
-            st.markdown("- 🏷️ *Target Persona:* Quebec Early Adopter")
+            st.markdown(f"- 🎨 *Style:* {current_content['color']}")
+            st.markdown(f"- 🧵 *Material:* {current_content['material']}")
+            st.markdown("- 📦 *Bundle Suggestion:* Apparel + Local Experience Access")
 
-    st.success(f"✅ {theme_name} successfully mapped. Ready for M4 Dynamic Delivery.")
+    st.success(f"✅ {current_content['title']} aligned with DR3/DR9.")
 
 # --- 模块 4: 动态交付 (Dynamic Delivery) ---
 elif step == "M4: Dynamic Delivery":
