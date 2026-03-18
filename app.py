@@ -445,19 +445,19 @@ elif step == "M3: Co-design Lab":
     # 定义不同场景的内容字典
     content_map = {
         "Laurentian Forest Yoga (Nature Connectivity)": {
-            "img": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600",
+            "https://www.bonjourquebec.com/media/juna-yoga-ski-yoga-a-mont-tremblant.jpg?width=2900&height=2400",
             "title": "Laurentian Forest Yoga",
             "color": "Pine Green & Earthy Brown",
             "material": "Thermal Recycled Polyester"
         },
         "Montreal Urban Meditation (Mindfulness)": {
-            "img": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600",
+            "img": "https://www.bonjourquebec.com/media/JunaYoga-Tremblant-Cours-Groupe-Yoga.jpg?width=2900&height=2400",
             "title": "Montreal Urban Meditation",
             "color": "Cool Grey & Zen White",
             "material": "Seamless Organic Cotton"
         },
         "St. Lawrence River Flow (Water Element)": {
-            "img": "https://images.unsplash.com/photo-1500333913892-d34bdb0e230d?q=80&w=600",
+            "img": "https://www.bonjourquebec.com/media/juna-yoga-retraite-aux-iles-de-la-madeleine.jpg?width=2900&height=2400",
             "title": "St. Lawrence River Flow",
             "color": "Deep River Blue & Mist",
             "material": "Quick-dry Performance Fabric"
