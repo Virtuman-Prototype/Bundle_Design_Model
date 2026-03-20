@@ -624,28 +624,63 @@ elif step == "M3: Co-design Lab":
     st.success(f"✅ {current_content['title']} aligned with DR3/DR9 requirements.")
 
 
-# --- 模块 4: 动态交付 (Dynamic Delivery) ---
 elif step == "M4: Dynamic Delivery":
-    st.title("✨ M4: Dynamic Bundle Output Engine")
-    st.write("Final Co-created Bundles for the Quebec Market.")
-    
-    inventory = pd.read_csv("Apparel_Inventory.csv")
-    
-    # 模拟生成 3 个精选 Bundle
-    scenarios = ["#NatureConnection", "#InnerFlow", "#SlowLiving"]
-    
-    cols = st.columns(3)
-    for i, scenario in enumerate(scenarios):
-        with cols[i]:
-            st.subheader(f"Bundle {i+1}")
-            st.caption(scenario)
-            # 找到对应场景的产品
-            items = inventory[inventory['Scenario_Tag'] == scenario].head(2)
-            for _, item in items.iterrows():
-                st.image(item['Image_URL'], use_column_width=True)
-                st.write(f"**{item['Brand']}** - {item['Product_Name']}")
-            
-            st.button(f"Refine {i+1}", key=f"btn_{i}")
+    st.title("🚀 M4: Dynamic Bundle Output Engine")
+    st.markdown("### ⚡ Dynamic Re-ranking & UI Rendering")
+    st.info("Finalizing the bundle by balancing aesthetic consistency (DP3) and experience relevance (DP4).")
+
+    # --- 1. 显性化后台逻辑 (Process 层) ---
+    with st.status("🧠 AI Engine: Executing Dynamic Re-ranking...", expanded=True) as status:
+        st.write("📥 Fetching M3 Scenario: " + ("Forest Yoga" if "Forest" in scenario_choice else "Selected Scenario"))
+        import time
+        time.sleep(1)
+        st.write("⚖️ Balancing Brand Alignment vs. Personal Preference (DP3/DP4)...")
+        # 模拟 Re-ranking 过程
+        st.progress(0.6, text="Processing Latent Association Matrix...")
+        time.sleep(1)
+        st.write("🎨 Rendering Visual Bundle Cards (DR12)...")
+        status.update(label="✅ Delivery Ready: Optimized & Re-ranked!", state="complete")
 
     st.divider()
-    st.write("🔄 **Feedback Loop (DR12):** Interaction data will refine Module 1 weights.")
+
+    # --- 2. 核心输出：互动式 Bundle 卡片 (Output 层) ---
+    col_card, col_metrics = st.columns([2, 1])
+    
+    with col_card:
+        with st.container(border=True):
+            # 获取 M3 的图文数据
+            current = content_map[scenario_choice]
+            st.image(current["img"], use_container_width=True)
+            
+            st.markdown(f"### 🏷️ **{current['title']} Bundle**")
+            st.write(f"**Composition:** JUNA Core Set + Partner {current['color']} Layer")
+            
+            # 价格与行动点
+            c1, c2 = st.columns(2)
+            with c1:
+                st.metric("Bundle Price", "$189.00", "-15% Savings")
+            with c2:
+                # 模拟下载与保存
+                st.button("📥 Export Proposal (PDF)", use_container_width=True)
+                if st.button("❤️ Save to My Designs", key="save_m4"):
+                    st.toast("Bundle saved to your dashboard!", icon="💾")
+
+    with col_metrics:
+        st.write("**📊 Real-time Delivery Metrics**")
+        # 展示 DP12 反馈循环的量化指标
+        st.progress(0.92, text="Aesthetic Consistency")
+        st.progress(0.88, text="Scenario-Fit Score")
+        st.progress(0.75, text="Market Trend Velocity")
+        
+        st.divider()
+        # --- 3. 反馈闭环 (DR12 Feedback Loop) ---
+        st.write("**🔄 Interaction Feedback Loop**")
+        feedback = st.radio("Is this bundle aligned with your goal?", ("Perfect Match", "Need Refinement", "Not Relevant"))
+        
+        if st.button("🚀 Submit Feedback for Iteration", key="feedback_m4"):
+            st.balloons()
+            st.success("Feedback captured! Parameters sent back to M1/M2 for DR12 refinement.")
+
+    st.divider()
+    st.caption("🎯 **DSR Goal**: This module completes one cycle by providing a validated, tangible design artifact ready for market testing.")
+
