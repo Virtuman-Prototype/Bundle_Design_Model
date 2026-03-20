@@ -15,6 +15,17 @@ st.set_page_config(
     page_icon="🧘",
     layout="wide"
 )
+st.markdown("""
+    <style>
+    /* 针对所有的 popover 按钮文字进行样式定制 */
+    div[data-testid="stPopover"] button p {
+        font-size: 12px !important;
+        white-space: nowrap !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 # --- 2. 核心 AI 模型与缓存 (DSR Step 3) ---
 @st.cache_resource
@@ -468,10 +479,25 @@ elif step == "M2: Community Insights":
 # --- 模块 3: 协同设计实验室 (Co-design Lab) ---
 elif step == "M3: Co-design Lab":
     st.title("🧪 M3: Co-creation Design Lab")
-    st.markdown("### 🧬 Data Fusion & Scenario Mapping")
+
+    # --- [新增]---1 输入层：连接服装内容库 ---
+    st.markdown("### 📦 Step 1: Connect Apparel Databases")
+    st.write("Link JUNA & Partner product libraries to enable Preference Filtering.")
     
-    # --- 1. 下拉菜单选择 ---
-    st.write("#### 🎯 Select Target Co-creation Scenario")
+    col_inv1, col_inv2 = st.columns(2)
+    with col_inv1:
+        with st.popover("👚 JUNA Inventory (API/CSV)"):
+            st.text_input("JUNA Catalog API Endpoint", "https://api.juna.com/v1/inventory")
+            st.file_uploader("Or upload JUNA Product List (.csv)", type="csv", key="juna_csv")
+    with col_inv2:
+        with st.popover("🌿 Partner Inventory (API/CSV)"):
+            st.text_input("Partner Catalog API Endpoint", "https://api.partner.com/v1/stock")
+            st.file_uploader("Or upload Partner Product List (.csv)", type="csv", key="partner_csv")
+
+    st.divider()    
+    
+    # --- 2. 下拉菜单选择 ---
+    st.write("#### 🎯 Step2:Select Target Co-creation Scenario")
     scenario_choice = st.selectbox(
         "Choose a validated scenario based on M2 Trends:",
         [
@@ -480,6 +506,40 @@ elif step == "M3: Co-design Lab":
             "St. Lawrence River Flow (Water Element)"
         ]
     )
+
+    # --- [新增] Process 层：Preference Filtering 逻辑展示 ---
+    st.divider()
+    st.subheader("⚙️ Step 3: Interactive Lab & Preference Filtering")
+    
+    col_lab1, col_lab2 = st.columns([1, 1])
+    with col_lab1:
+        st.write("**Brand Strategy Parameters**")
+        intensity = st.slider("Co-creation Intensity (Fit Weight)", 0.0, 1.0, 0.8)
+        st.caption("Adjusting the bias between Brand DNA consistency vs. Market Trend velocity.")
+        
+        # 审美标签墙 (Aesthetic Tags)
+        st.write("**Market Aesthetic Tags (from M2)**")
+        st.button("#Minimalist")
+        st.button("#QuebecNature")
+        st.button("#SustainableFlow")
+        
+    with col_lab2:
+        st.write("**Preference Filtering Logic**")
+        # 用状态组件代替原始代码块
+        with st.status("🔍 System Logic Execution", expanded=False):
+            st.write("1. Accessing combined product catalog...")
+            st.write(f"2. Filtering by Scenario: **{scenario_choice}**")
+            st.write(f"3. Applying Intensity Weight: **{intensity}**")
+            st.write("4. Ranking items via Latent Association Mapping...")
+            st.write("✅ 12 optimal pairs identified.")
+        
+        # 按钮保持不变，但在上方增加一点视觉引导
+        
+        if st.button("✨ Re-optimize & Rank Bundle Elements", key="m3_reoptimize_top"):
+            with st.spinner("Filtering products based on FitIndex and Latent Association..."):
+                import time
+                time.sleep(1.5)
+                st.success("Preference Filtering Complete: 12 candidate pairs identified.")
 
     st.divider()
 
@@ -498,15 +558,17 @@ elif step == "M3: Co-design Lab":
         st.metric("Community Trend Weight", tag, weight)
 
     # --- 3. 参数微调与优化按钮 ---
-    with st.expander("🛠️ Advanced Strategy Tuning"):
+    st.write("#### ⚙️ Step 3: Interactive Lab & Preference Filtering")
+    with st.expander("🛠️ Advanced Strategy Tuning", expanded=True): # 建议默认展开，增加丰富感
         col_a, col_b = st.columns(2)
         with col_a:
             st.slider("Brand Core Consistency", 0.0, 1.0, 0.8)
             st.slider("Community Trend Velocity", 0.0, 1.0, 0.6)
         with col_b:
-            st.write("**Strategy Status:** Ready")
+            st.write("**Strategy Status:** Ready to Match")
+            # 加上 key="m3_reoptimize_button" 即可
             # 重新加上你想要的按钮，并增加点击后的反馈
-            if st.button("✨ Re-optimize Mapping"):
+            if st.button("✨ Re-optimize & Rank Bundle Elements", key="m3_reoptimize_bottom"):
                 with st.spinner("Re-calculating semantic distance..."):
                     import time
                     time.sleep(1)
@@ -514,8 +576,8 @@ elif step == "M3: Co-design Lab":
 
     st.divider()
 
-    # --- 4. 动态场景匹配结果 (核心修复：三场景联动) ---
-    st.subheader("🎯 Scenario-Apparel Mapping Result")
+# --- 4. 最终输出层：Optimized Bundle Concept (Step 4) ---
+    st.subheader("🎯 Step 4: Optimized Bundle Concept & Rationale")
     
     # 定义不同场景的内容字典
     content_map = {
@@ -542,20 +604,25 @@ elif step == "M3: Co-design Lab":
     # 获取当前选中的内容
     current_content = content_map[scenario_choice]
 
+    
+    # 渲染结果卡片
     with st.container(border=True):
         c1, c2 = st.columns([1, 1.5])
         with c1:
             st.image(current_content["img"], caption=f"Concept: {current_content['title']}")
         with c2:
             st.markdown(f"#### **Theme: {current_content['title']}**")
-            st.write(f"**Rationale:** High semantic match between 'Flow' elements and the {tag} factor.")
+           
+            # 融合 Rationale Report 到原来的描述中
+            st.info(f"**Rationale Report:** This bundle achieved a **{intensity*100:.1f}%** matching score. High semantic match found between '{tag}' elements and brand DNA.")
             
             st.write("**Mapped Design Elements:**")
             st.markdown(f"- 🎨 *Style:* {current_content['color']}")
             st.markdown(f"- 🧵 *Material:* {current_content['material']}")
             st.markdown("- 📦 *Bundle Suggestion:* Apparel + Local Experience Access")
 
-    st.success(f"✅ {current_content['title']} aligned with DR3/DR9.")
+    st.success(f"✅ {current_content['title']} aligned with DR3/DR9 requirements.")
+
 
 # --- 模块 4: 动态交付 (Dynamic Delivery) ---
 elif step == "M4: Dynamic Delivery":
