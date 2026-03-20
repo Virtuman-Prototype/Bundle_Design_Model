@@ -504,7 +504,8 @@ elif step == "M3: Co-design Lab":
             "Laurentian Forest Yoga (Nature Connectivity)", 
             "Montreal Urban Meditation (Mindfulness)", 
             "St. Lawrence River Flow (Water Element)"
-        ]
+        ]key="scenario_selection"  # <--- 关键就在这里！加个逗号，写上这个 key
+)
     )
 
     # --- [新增] Process 层：Preference Filtering 逻辑展示 ---
