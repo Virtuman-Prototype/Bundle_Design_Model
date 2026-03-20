@@ -353,35 +353,35 @@ elif step == "M2: Community Insights":
     st.markdown("### 🔗 Please link your social media here:")
 
     # 1. 第一行：JUNA Académie 的链接输入
-    st.write("**Step 1: Connect JUNA & Partner Channels**")
+    st.write("**Step 1: Connect Wellness Communities**")
     col1, col2, col3, _ = st.columns([1, 1, 1, 5])
     
     with col1:
         # 使用 span 标签通过 CSS 缩小字号，防止换行
-        with st.popover("📸 IG"):
+        with st.popover("📸 Community 1"):
             link_juna_ig = st.text_input("JUNA Instagram Link", "https://instagram.com/juna_academie")
     with col2:
-        with st.popover("📘 FB"):
+        with st.popover("📘 Community 2"):
             link_juna_fb = st.text_input("JUNA Facebook Link")
     with col3:
-        with st.popover("🎥 YT"):
+        with st.popover("🎥 Community 3"):
             link_juna_yt = st.text_input("JUNA YouTube Link")
 
     st.divider()
 
     # 2. 第二行：合作伙伴的链接输入
-    st.write("**Step 2: Connect Partner (Brand B) Channels**")
+    st.write("**Step 2: Connect Apparel Communities**")
     colb1, colb2, colb3, _ = st.columns([1, 1, 1, 5])
     
             # 注意这里！必须改为 colb1, colb2, colb3
     with colb1:  # 刚才你写成了 col1
-        with st.popover("📸 IG"):
+        with st.popover("📸 Community 4"):
             link_b_ig = st.text_input("Partner Instagram Link", "https://instagram.com/rose_boreal")
     with colb2:  # 刚才你写成了 col2
-        with st.popover("📘 FB"):
+        with st.popover("📘 Community 5"):
             link_b_fb = st.text_input("Partner Facebook Link")
     with colb3:  # 刚才你写成了 col3
-        with st.popover("🎥 YT"):
+        with st.popover("🎥 Community 6"):
             link_b_yt = st.text_input("Partner YouTube Link")
 
     st.write("") 
