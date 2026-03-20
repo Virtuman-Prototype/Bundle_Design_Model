@@ -264,7 +264,7 @@ if step == "M1: Strategic Evaluator":
             st.dataframe(df_fit, use_container_width=True)
 
             # C. 绘制雷达图 (注意：这里必须保持缩进！)
-            st.subheader("🕸️ Brand Synergy Radar Chart")
+            st.subheader("🕸️ Brand Fit Radar Chart")
             import plotly.graph_objects as go
 
             categories = df_fit["Dimension"].tolist()
@@ -322,7 +322,7 @@ if step == "M1: Strategic Evaluator":
             if avg_s >= 4:
                 st.success(f"""
                 **STRATEGIC DECISION: PROCEED TO BUNDLING**
-                - **Status**: High Synergy Detected (Score: {avg_s:.2f}) 
+                - **Status**: High Fit Detected (Score: {avg_s:.2f}) 
                 - **Next Step**: Unlock the 'Urban Meditation Retreat' bundle in M4[cite: 173]. 
                 - **Rationale**: Core values and aesthetic preferences are highly congruent[cite: 178].
                 """)
@@ -331,7 +331,7 @@ if step == "M1: Strategic Evaluator":
             elif avg_s >= 3:
                 st.warning(f"""
                 **STRATEGIC DECISION: CONDITIONAL COLLABORATION**
-                - **Status**: Moderate Synergy (Score: {avg_s:.2f})
+                - **Status**: Moderate Fit (Score: {avg_s:.2f})
                 - **Next Step**: Conduct a joint pilot event (M3) before full inventory commitment.
                 - **Rationale**: Functional complementarity exists, but audience overlap needs verification[cite: 161].
                 """)
@@ -339,7 +339,7 @@ if step == "M1: Strategic Evaluator":
             else:
                 st.error(f"""
                 **STRATEGIC DECISION: RE-EVALUATE PARTNERSHIP**
-                - **Status**: Low Synergy (Score: {avg_s:.2f})
+                - **Status**: Low Fit (Score: {avg_s:.2f})
                 - **Next Step**: Search for alternative partners or adjust Brand B's positioning.
                 - **Rationale**: Significant gaps in latent factor alignment[cite: 175].
                 """)
