@@ -224,7 +224,7 @@ else:
 
 if step == "M1: Strategic Evaluator":
     st.title("🛡️ M1: Strategic Brand Alignment Evaluator")
-    st.info("This module uses Latent Association Analysis to evaluate brand fit.")
+    st.info("This module utilizes Semantic Embedding (SBERT) and Vector Space Analysis to evaluate brand fit index through Latent Association..")
     
     col_a, col_b = st.columns(2)
     with col_a:
