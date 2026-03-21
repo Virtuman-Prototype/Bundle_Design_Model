@@ -240,8 +240,8 @@ content_map = {
         "material": "Thermal Recycled Polyester"
     },
     "Montreal Urban Meditation (Mindfulness)": {
-        "img": "https://junaacademie.com/wp-content/uploads/2025/01/femme-md-destination-quebec-1.jpg",
-        "img_persona_a": "https://junaacademie.com/wp-content/uploads/2024/08/Union.jpg", # 建议换成真实的
+        "img": "https://junaacademie.com/wp-content/uploads/2024/08/Union.jpg",
+        "img_persona_a": "https://junaacademie.com/wp-content/uploads/2025/01/nos-formation-yoga.jpg", # 建议换成真实的
         "img_persona_b": "https://junaacademie.com/wp-content/uploads/2024/12/femme-format-cercle.jpg", # 建议换成真实的
         "title": "Montreal Urban Meditation",
         "color": "Cool Grey & Zen White",
@@ -250,7 +250,7 @@ content_map = {
     "St. Lawrence River Flow (Water Element)": {
         "img": "https://images.squarespace-cdn.com/content/v1/62505bc1382ad060ef4a9bda/a366a148-0d02-4324-a37a-4caa28c015ce/IMG_5198-Edit.jpg?format=750w",
         "img_persona_a": "https://junaacademie.com/wp-content/uploads/2025/01/femme-md-destination-quebec.jpg", # 建议换成真实的
-        "img_persona_b": "https://junaacademie.com/wp-content/uploads/2025/11/DSC_1789-2048x1361.jpg", # 建议换成真实的
+        "img_persona_b": "https://junaacademie.com/wp-content/uploads/2024/11/DSC_4804-scaled.jpg", # 建议换成真实的
         "title": "St. Lawrence River Flow",
         "color": "Deep River Blue & Mist",
         "material": "Quick-dry Performance Fabric"
