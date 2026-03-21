@@ -240,7 +240,7 @@ content_map = {
         "material": "Thermal Recycled Polyester"
     },
     "Montreal Urban Meditation (Mindfulness)": {
-        "img": "https://junaacademie.com/wp-content/uploads/2024/08/Union.jpg",
+        "img": "https://junaacademie.com/wp-content/uploads/2025/01/femme-md-destination-quebec-1.jpg",
         "img_persona_a": "https://junaacademie.com/wp-content/uploads/2025/01/nos-formation-yoga.jpg", # 建议换成真实的
         "img_persona_b": "https://junaacademie.com/wp-content/uploads/2024/12/femme-format-cercle.jpg", # 建议换成真实的
         "title": "Montreal Urban Meditation",
