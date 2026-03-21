@@ -267,8 +267,9 @@ else:
     st.sidebar.write("👤 **Serena S YANG**")
     st.sidebar.caption("Shuoyang5@Carleton")
 
+# --- 模块1：战略品牌协同评估器 ---
 if step == "M1: Strategic Evaluator":
-    st.title("🛡️ M1: Strategic Brand Synergy Evaluator")
+    st.title("🛡️ M1: Strategic Brand Alignment Evaluator")
     st.info("This module uses Latent Association Analysis to evaluate brand fit.")
     
     col_a, col_b = st.columns(2)
