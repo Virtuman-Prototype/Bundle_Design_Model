@@ -594,7 +594,7 @@ elif step == "M3: Co-design Lab":
         st.write("**Preference Filtering Logic**")
         # 用状态组件代替原始代码块
         with st.status("🔍 System Logic Execution", expanded=False):
-            st.write("1. Accessing combined product catalog...")r
+            st.write("1. Accessing combined product catalog...")
             st.write(f"2. Filtering by Scenario: **{scenario_choice}**")
             st.write(f"3. Applying Intensity Weight: **{intensity}**")
             st.write("4. Ranking items via Latent Association Mapping...")
