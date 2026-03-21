@@ -240,7 +240,7 @@ content_map = {
         "material": "Thermal Recycled Polyester"
     },
     "Montreal Urban Meditation (Mindfulness)": {
-        "img": "https://www.bonjourquebec.com/media/JunaYoga-Tremblant-Cours-Groupe-Yoga.jpg?width=2900&height=2400",
+        "img": "https://images.squarespace-cdn.com/content/v1/62505bc1382ad060ef4a9bda/172abace-0347-49b7-a3cd-63d00c198265/IMG_0077.jpg?format=750w",
         "img_persona_a": "https://junaacademie.com/wp-content/uploads/2025/01/femme-md-destination-quebec-1.jpg", # 建议换成真实的
         "img_persona_b": "https://th.bing.com/th/id/OIP.BAaeljJgusrosY2bSHTNggHaJQ?w=184&h=230&c=7&r=0&o=7&dpr=2&pid=1.7&rm=3", # 建议换成真实的
         "title": "Montreal Urban Meditation",
@@ -248,7 +248,7 @@ content_map = {
         "material": "Seamless Organic Cotton"
     },
     "St. Lawrence River Flow (Water Element)": {
-        "img": "https://tse2.mm.bing.net/th/id/OIP.eYuPKfDHc28C5nTdNfMppwHaHU?rs=1&pid=ImgDetMain&o=7&rm=3",
+        "img": "https://images.squarespace-cdn.com/content/v1/62505bc1382ad060ef4a9bda/a366a148-0d02-4324-a37a-4caa28c015ce/IMG_5198-Edit.jpg?format=750w",
         "img_persona_a": "https://junaacademie.com/wp-content/uploads/2025/01/femme-md-destination-quebec.jpg", # 建议换成真实的
         "img_persona_b": "https://junaacademie.com/wp-content/uploads/2025/11/DSC_1789-2048x1361.jpg", # 建议换成真实的
         "title": "St. Lawrence River Flow",
