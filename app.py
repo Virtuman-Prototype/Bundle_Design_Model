@@ -232,7 +232,7 @@ content_map = {
 # ==========================================
 content_map = {
     "Laurentian Forest Yoga (Nature Connectivity)": {
-        "img": "https://www.bonjourquebec.com/media/juna-yoga-ski-yoga-a-mont-tremblant.jpg?width=2900&height=2400",
+        "img": "https://images.squarespace-cdn.com/content/v1/62505bc1382ad060ef4a9bda/fa9d16ad-1c23-4e2b-80ae-7ee89721b46e/IMG_0024.jpg?format=750w",
         "img_persona_a": "https://www.roseboreal.com/cdn/shop/files/RoseBoreal_SS24_EdelwiseJogger_TotalEclipse-05.jpg?v=1718748425",
         "img_persona_b": "https://tse1.explicit.bing.net/th/id/OIP.3ccQngZz9Ww-9ZZgUDtHMQHaLG?rs=1&pid=ImgDetMain&o=7&rm=3",
         "title": "Laurentian Forest Yoga",     
@@ -240,9 +240,9 @@ content_map = {
         "material": "Thermal Recycled Polyester"
     },
     "Montreal Urban Meditation (Mindfulness)": {
-        "img": "https://images.squarespace-cdn.com/content/v1/62505bc1382ad060ef4a9bda/172abace-0347-49b7-a3cd-63d00c198265/IMG_0077.jpg?format=750w",
-        "img_persona_a": "https://junaacademie.com/wp-content/uploads/2025/01/femme-md-destination-quebec-1.jpg", # 建议换成真实的
-        "img_persona_b": "https://th.bing.com/th/id/OIP.BAaeljJgusrosY2bSHTNggHaJQ?w=184&h=230&c=7&r=0&o=7&dpr=2&pid=1.7&rm=3", # 建议换成真实的
+        "img": "https://junaacademie.com/wp-content/uploads/2025/01/femme-md-destination-quebec-1.jpg",
+        "img_persona_a": "https://junaacademie.com/wp-content/uploads/2024/08/Union.jpg", # 建议换成真实的
+        "img_persona_b": "https://junaacademie.com/wp-content/uploads/2024/12/femme-format-cercle.jpg", # 建议换成真实的
         "title": "Montreal Urban Meditation",
         "color": "Cool Grey & Zen White",
         "material": "Seamless Organic Cotton"
