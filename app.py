@@ -576,7 +576,7 @@ elif step == "M3: Co-design Lab":
 
     # --- [新增] Process 层：Preference Filtering 逻辑展示 ---
     st.divider()
-    st.subheader("⚙️ Step 3: Interactive Lab & Preference Filtering")
+    st.subheader("⚙️ Brand Strategic Setting")
     
     col_lab1, col_lab2 = st.columns([1, 1])
     with col_lab1:
@@ -594,7 +594,7 @@ elif step == "M3: Co-design Lab":
         st.write("**Preference Filtering Logic**")
         # 用状态组件代替原始代码块
         with st.status("🔍 System Logic Execution", expanded=False):
-            st.write("1. Accessing combined product catalog...")
+            st.write("1. Accessing combined product catalog...")r
             st.write(f"2. Filtering by Scenario: **{scenario_choice}**")
             st.write(f"3. Applying Intensity Weight: **{intensity}**")
             st.write("4. Ranking items via Latent Association Mapping...")
