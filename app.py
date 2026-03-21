@@ -208,7 +208,7 @@ st.sidebar.markdown("---") # 下方分割线，准备接 M1~M4 导航
 # 将内容字典放在这里，确保 M3 和 M4 都能读取到
 content_map = {
     "Laurentian Forest Yoga (Nature Connectivity)": {
-        "img": "https://www.bonjourquebec.com/media/juna-yoga-ski-yoga-a-mont-tremblant.jpg?width=2900&height=2400",
+        "img": "https://images.squarespace-cdn.com/content/v1/62505bc1382ad060ef4a9bda/172abace-0347-49b7-a3cd-63d00c198265/IMG_0077.jpg?format=750w",
         "title": "Laurentian Forest Yoga",     
         "color": "Pine Green & Earthy Brown",
         "material": "Thermal Recycled Polyester"
