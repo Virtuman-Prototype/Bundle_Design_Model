@@ -135,70 +135,74 @@ st.sidebar.write("🕵️‍♂️ **System Architecture Overview**")
 diag_bin_str = get_base64_of_bin_file('architecture_diagram.png')
 
 if diag_bin_str:
-    # 方案：利用 HTML/CSS 实现点击放大
-    # 我们创建一个隐藏的 input checkpoint，点击图片时触发
+    # 确保 ID 是全局唯一的，防止冲突
+    unique_id = "architecture_zoom_trigger"
+    
     diagram_html = f"""
     <style>
-    /* 缩略图样式 */
-    .sidebar-thumbnail {{
+    /* 1. 缩略图：由于在侧边栏，宽度设为 100% */
+    .thumb-btn {{
         width: 100%;
         cursor: zoom-in;
-        border-radius: 5px;
-        transition: transform 0.2s;
-        border: 1px solid #ddd;
+        border-radius: 8px;
+        border: 1px solid #444;
+        transition: 0.3s;
+        display: block;
     }}
-    .sidebar-thumbnail:hover {{
+    .thumb-btn:hover {{
+        filter: brightness(1.2);
         transform: scale(1.02);
     }}
 
-    /* 放大后的全图蒙层样式 */
-    #diag-lightbox {{
+    /* 2. 蒙层基础样式：默认隐藏 */
+    .full-screen-overlay {{
         display: none;
         position: fixed;
-        z-index: 9999;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.85);
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 999999; /* 极高层级，确保盖住所有 UI */
         cursor: zoom-out;
         justify-content: center;
         align-items: center;
-        padding: 20px;
     }}
 
-    #diag-lightbox img {{
+    /* 3. 放大图片自适应 */
+    .full-screen-overlay img {{
         max-width: 90%;
         max-height: 90%;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+        object-fit: contain;
+        box-shadow: 0 0 20px rgba(255,255,255,0.1);
     }}
 
-    /* 触发逻辑：当 checkpoint 被选中时显示蒙层 */
-    #diag-trigger:checked ~ #diag-lightbox {{
+    /* 4. 核心联动逻辑：选中时显示 */
+    #{unique_id}:checked ~ .full-screen-overlay {{
         display: flex;
     }}
-    
-    /* 隐藏 checkbox */
-    #diag-trigger {{
-        display: none;
+
+    /* 5. 彻底隐藏原始复选框 */
+    #{unique_id} {{
+        display: none !important;
     }}
     </style>
 
-    <input type="checkbox" id="diag-trigger">
-    
-    <label for="diag-trigger">
-        <img src="data:image/png;base64,{diag_bin_str}" class="sidebar-thumbnail" alt="Architectural Diagram Thumbnail">
+    <input type="checkbox" id="{unique_id}">
+
+    <label for="{unique_id}">
+        <img src="data:image/png;base64,{diag_bin_str}" class="thumb-btn" alt="Model Architecture">
     </label>
 
-    <div id="diag-lightbox" onclick="document.getElementById('diag-trigger').checked=false">
-        <img src="data:image/png;base64,{diag_bin_str}" alt="Architectural Diagram Full Resolution">
-    </div>
+    <label for="{unique_id}" class="full-screen-overlay">
+        <img src="data:image/png;base64,{diag_bin_str}">
+    </label>
     """
+    # 注意：这里只调用一次 markdown，不要在上面再写 st.sidebar.image 了
     st.sidebar.markdown(diagram_html, unsafe_allow_html=True)
-    st.sidebar.caption("💡 Click image to enlarge the full design logic.")
+    st.sidebar.caption("💡 Click image to enlarge the full design logic.") 
 else:
-    st.sidebar.warning("⚠️ 'architecture_diagram.png' not found. Please upload to GitHub.")
+    st.sidebar.warning("⚠️ Architecture diagram file not found.")
 
 st.sidebar.markdown("---") # 下方分割线，准备接 M1~M4 导航
 
